@@ -1,19 +1,9 @@
-<h2>Books</h2>
-<table class="table table-bordered table-striped table-hover">
-    <thead>
-        <td>ISBN</td>
-        <td>Title</td>
-        <td>Author</td>
-        <td>Note</td>
-    </thead>
-    <tbody>
-        <tr ng-repeat="book in books">
-            <td>{{book.isbn}}</td>
-            <td>{{book.title}}</td>
-            <td>{{book.author}}</td>
-            <td>{{book.note}}</td>
-        </tr>
-</tbody>
-</table>
-    Your name: <input ng-model="me">
-	Hello {{me}}!
+<div class="hero-unit">
+  <h1>'Allo, 'Allo!</h1>
+  <p>You now have</p>
+  <ul>
+      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+  </ul>
+  <p>installed.</p>
+  <h3>Enjoy coding! - Yeoman</h3>
+</div>

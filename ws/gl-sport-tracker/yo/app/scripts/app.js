@@ -1,7 +1,10 @@
 'use strict';
 
-
-angular.module('yoApp', ['ngResource'])
+angular.module('yoApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize'
+])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -12,14 +15,3 @@ angular.module('yoApp', ['ngResource'])
         redirectTo: '/'
       });
   });
-/*angular.module('yoApp', ['ui.calendar']).config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/
-
