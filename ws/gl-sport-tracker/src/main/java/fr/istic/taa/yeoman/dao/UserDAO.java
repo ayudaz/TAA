@@ -5,18 +5,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import fr.istic.taa.yeoman.entities.User;
 
-@Path("/users")
-public class UserDAO extends GenericDAO {
+public class UserDAO {
+	
+	LocalEntityManagerFactory emf = new LocalEntityManagerFactory();
 	
 	public void persistUser(User user) {
-        EntityManager em = createEntityManager();
+        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
  
@@ -26,16 +23,15 @@ public class UserDAO extends GenericDAO {
         em.close();
     }
  
-	@GET
-    @Produces({ MediaType.APPLICATION_JSON })
-    public List<User> getAllUsers() {
-        EntityManager em = createEntityManager();
+    @SuppressWarnings("unchecked")
+	public List<User> getAllUsers() {
+        EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
  
         Query allUsersQuery = em.createQuery("select u from User u");
  
-        List<User> allUsers = allUsersQuery.getResultList();
+		List<User> allUsers = allUsersQuery.getResultList();
  
         tx.commit();
         em.close();
@@ -43,8 +39,6 @@ public class UserDAO extends GenericDAO {
         return allUsers;
     }
 	
-	@GET
-    @Produces(MediaType.TEXT_PLAIN)
     public String sayPlainTextHello() {
 		 return "Hello Jersey";
     }

@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import fr.istic.taa.yeoman.dao.GenericDAO;
 import fr.istic.taa.yeoman.dao.UserDAO;
 import fr.istic.taa.yeoman.entities.User;
 
@@ -37,7 +36,5 @@ public class UserTest {
     	for (User user : allUsers) {
 			System.out.println(user);
 		}
-    	
-    	GenericDAO.closeEntityManager();
     }
 }
