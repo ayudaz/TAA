@@ -32,6 +32,8 @@ public interface User {
 	public void setAvatar(String avatar);
 	
 	// Links with others interfaces
-	public List<User> amis();
-	public List<Session> seances();
+	public List<Session> getSessions();
+	public void addSession(Session session);
+	public void removeSession(Session session);
+	public void emptySession();
 }

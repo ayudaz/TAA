@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.istic.taa.yeoman.dao.UserDAO;
-import fr.istic.taa.yeoman.entities.User;
+import fr.istic.yeoman.api.User;
 
 @Path("/users")
 public class UserResource {

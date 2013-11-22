@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import fr.istic.taa.yeoman.dao.UserDAO;
-import fr.istic.taa.yeoman.entities.User;
+import fr.istic.taa.yeoman.entities.UserImpl;
+import fr.istic.yeoman.api.User;
 
 public class UserTest {
 	/**
@@ -14,7 +15,7 @@ public class UserTest {
     public static void main(String[] args) {
     	UserDAO dao = new UserDAO();
     	
-    	User tt = new User();
+    	User tt = new UserImpl();
     	tt.setFirstName("Titi");
     	tt.setLastName("Tata");
     	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

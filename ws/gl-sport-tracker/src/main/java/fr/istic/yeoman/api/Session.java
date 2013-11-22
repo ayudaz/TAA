@@ -27,8 +27,12 @@ public interface Session {
 	public void addMusic(Music music);
 	public void removeMusic(Music music);
 	public void emptyMusic();
-	
-	
-	
-	
+	public Weather getWeather();
+	public void setWeather(Weather weather);
+	public Goal getGoal();
+	public void setGoal(Goal goal);
+	public Course getCourse();
+	public void setCourse(Course course);
+	public User getUser();
+	public void setUser(User user);
 }

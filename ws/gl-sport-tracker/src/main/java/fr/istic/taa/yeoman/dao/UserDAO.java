@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import fr.istic.taa.yeoman.entities.User;
+import fr.istic.yeoman.api.User;
 
 public class UserDAO {
 	
