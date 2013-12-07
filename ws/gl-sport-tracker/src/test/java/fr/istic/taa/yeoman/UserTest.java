@@ -30,7 +30,7 @@ public class UserTest {
     	tt.setSize(170);
     	tt.setWeight(75.0);
     	
-    	dao.persistUser(tt);
+    	dao.create(tt);
     	
     	List<User> allUsers = dao.getAllUsers();
     	

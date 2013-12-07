@@ -8,20 +8,9 @@ import javax.persistence.Query;
 
 import fr.istic.yeoman.api.User;
 
-public class UserDAO {
+public class UserDAO extends GenericDaoImpl<User, Integer> {
 	
 	LocalEntityManagerFactory emf = new LocalEntityManagerFactory();
-	
-	public void persistUser(User user) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
- 
-        em.persist(user);
- 
-        tx.commit();
-        em.close();
-    }
  
     @SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
@@ -29,7 +18,7 @@ public class UserDAO {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
  
-        Query allUsersQuery = em.createQuery("select u from User u");
+        Query allUsersQuery = em.createQuery("select u from UserImpl u");
  
 		List<User> allUsers = allUsersQuery.getResultList();
  
@@ -38,8 +27,5 @@ public class UserDAO {
  
         return allUsers;
     }
-	
-    public String sayPlainTextHello() {
-		 return "Hello Jersey";
-    }
+    
 }

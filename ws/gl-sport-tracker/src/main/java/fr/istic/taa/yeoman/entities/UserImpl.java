@@ -143,25 +143,26 @@ public class UserImpl implements User {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(targetEntity=SessionImpl.class, mappedBy="user", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@Override
 	public List<Session> getSessions() {
 		return sessions;
 	}
 	@Override
+	public void setSessions(List<Session> sessions){
+		this.sessions = sessions;
+	}
+	@Override
 	public void addSession(Session session) {
-		// TODO Auto-generated method stub
-		
+		sessions.add(session);
 	}
 	@Override
 	public void removeSession(Session session) {
-		// TODO Auto-generated method stub
-		
+		sessions.remove(session);
 	}
 	@Override
 	public void emptySession() {
-		// TODO Auto-generated method stub
-		
+		sessions.clear();
 	}
 	
 }

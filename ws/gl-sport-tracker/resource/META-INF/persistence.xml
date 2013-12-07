@@ -6,7 +6,7 @@
     http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
     version="1.0">
    <persistence-unit name="hsql" transaction-type="RESOURCE_LOCAL">
-     <class>fr.istic.taa.yeoman.entities.User</class>
+     <class>fr.istic.taa.yeoman.entities.UserImpl</class>
      <!--  <class>org.hibernate.ejb.test.Distributor</class> -->
      <!--  <class>org.hibernate.ejb.test.Item</class> -->
       <properties>
@@ -33,7 +33,7 @@
             Persistence unit for the gl-sport-tracker project on mysql
         </description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-   		<class>fr.istic.taa.yeoman.entities.User</class>
+   		<class>fr.istic.taa.yeoman.entities.UserImpl</class>
         <properties>
             <!--
             <property name="hibernate.ejb.cfgfile" value="/hibernate.cfg.xml"/>

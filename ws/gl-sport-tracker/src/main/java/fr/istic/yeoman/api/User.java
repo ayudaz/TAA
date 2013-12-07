@@ -36,4 +36,5 @@ public interface User {
 	public void addSession(Session session);
 	public void removeSession(Session session);
 	public void emptySession();
+	public void setSessions(List<Session> sessions);
 }

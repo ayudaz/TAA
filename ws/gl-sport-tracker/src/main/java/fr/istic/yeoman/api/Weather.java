@@ -14,4 +14,5 @@ public interface Weather {
 	
 	// links with others interfaces
 	public Session getSession();
+	public void setSession(Session session);
 }

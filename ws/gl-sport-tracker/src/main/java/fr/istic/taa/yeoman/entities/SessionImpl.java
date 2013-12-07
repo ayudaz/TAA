@@ -1,6 +1,8 @@
 package fr.istic.taa.yeoman.entities;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,7 +10,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,10 +31,15 @@ import fr.istic.yeoman.api.Weather;
 public class SessionImpl implements Session {
 	
 	private int id;
-	private Timestamp startDate;
-	private Timestamp endDate;
+	private Date startDate;
+	private Date endDate;
 	private Mode mode;
 	private User user;
+	private SportType sportType;
+	private List<Music> musics;
+	private Weather weather;
+	private Goal goal;
+	private Course course;
 	
 	/**
 	 * @return the id
@@ -41,6 +50,7 @@ public class SessionImpl implements Session {
 	public int getId() {
 		return id;
 	}
+	
 	/**
 	 * @param id the id to set
 	 */
@@ -48,14 +58,16 @@ public class SessionImpl implements Session {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	/**
 	 * @return the dateDebut
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Override
-	public Timestamp getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
+	
 	/**
 	 * @param startDate the dateDebut to set
 	 */
@@ -63,14 +75,16 @@ public class SessionImpl implements Session {
 	public void setStartDate(Timestamp startDate) {
 		this.startDate = startDate;
 	}
+	
 	/**
 	 * @return the dateFin
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Override
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
+	
 	/**
 	 * @param dateFin the dateFin to set
 	 */
@@ -78,6 +92,7 @@ public class SessionImpl implements Session {
 	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
+	
 	/**
 	 * @return the mode
 	 */
@@ -86,6 +101,7 @@ public class SessionImpl implements Session {
 	public Mode getMode() {
 		return mode;
 	}
+	
 	/**
 	 * @param mode the mode to set
 	 */
@@ -96,84 +112,90 @@ public class SessionImpl implements Session {
 	
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
-		
+		this.startDate = Calendar.getInstance().getTime();
 	}
-	@Override
-	public void timeout() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-		
+		this.endDate = Calendar.getInstance().getTime();
 	}
+	
 	@Override
+	@ManyToOne(targetEntity=SportTypeImpl.class)
 	public SportType getSportType() {
-		// TODO Auto-generated method stub
-		return null;
+		return sportType;
 	}
+
 	@Override
 	public void setSportType(SportType sportType) {
-		// TODO Auto-generated method stub
-		
+		this.sportType = sportType;
 	}
+	
 	@Override
+	@ManyToMany(targetEntity=MusicImpl.class, mappedBy="sessions")
 	public List<Music> getMusics() {
-		// TODO Auto-generated method stub
-		return null;
+		return musics;
 	}
+	
+	@Override
+	public void setMusics(List<Music> musics){
+		this.musics = musics;
+	}
+	
 	@Override
 	public void addMusic(Music music) {
-		// TODO Auto-generated method stub
-		
+		musics.add(music);
 	}
+	
 	@Override
 	public void removeMusic(Music music) {
-		// TODO Auto-generated method stub
-		
+		musics.remove(music);
 	}
+	
 	@Override
 	public void emptyMusic() {
-		// TODO Auto-generated method stub
-		
+		musics.clear();
 	}
+	
 	@Override
+	@OneToOne(targetEntity=WeatherImpl.class)
 	public Weather getWeather() {
-		// TODO Auto-generated method stub
-		return null;
+		return weather;
 	}
+	
 	@Override
 	public void setWeather(Weather weather) {
-		// TODO Auto-generated method stub
-		
+		this.weather = weather; 
 	}
+	
 	@Override
+	@OneToOne(targetEntity=GoalImpl.class)
 	public Goal getGoal() {
-		// TODO Auto-generated method stub
-		return null;
+		return goal;
 	}
+	
 	@Override
 	public void setGoal(Goal goal) {
-		// TODO Auto-generated method stub
-		
+		this.goal = goal;
 	}
+	
 	@Override
+	@OneToOne(targetEntity=CourseImpl.class)
 	public Course getCourse() {
-		// TODO Auto-generated method stub
-		return null;
+		return course;
 	}
+	
 	@Override
 	public void setCourse(Course course) {
-		// TODO Auto-generated method stub
-		
+		this.course = course;
 	}
-	@ManyToOne
+	
 	@Override
+	@ManyToOne(targetEntity=UserImpl.class)
 	public User getUser() {
 		return user;
 	}
+	
 	@Override
 	public void setUser(User user) {
 		this.user = user;

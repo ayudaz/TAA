@@ -12,4 +12,5 @@ public interface Course {
 	public Session getSession();
 	public void setSession(Session session);
 	public List<GPSPoint> getGPSPoints();
+	public void setGPSPoints(List<GPSPoint> gpsPoints);
 }

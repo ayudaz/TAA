@@ -16,5 +16,6 @@ public interface GPSPoint {
 	
 	// Links with others interfaces
 	public Course getCourse();
+	public void setCourse(Course course);
 	
 }
