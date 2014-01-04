@@ -11,12 +11,11 @@ import fr.istic.yeoman.api.Session;
 public class SessionDao extends GenericDaoImpl<SessionImpl, Integer> {
 
 	@SuppressWarnings("unchecked")
-	public List<Session> getSessionsByUser(int userId) {
+	public List<Session> getAll() {
 		EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
  
-        Query sessionsByUserQuery = entityManager.createQuery("select s from SessionImpl s join s.user u where u.id = :userId");
-        sessionsByUserQuery.setParameter("userId", userId);
+        Query sessionsByUserQuery = entityManager.createQuery("select s from SessionImpl s");
         
 		List<Session> allSessionsByUser = sessionsByUserQuery.getResultList();
  

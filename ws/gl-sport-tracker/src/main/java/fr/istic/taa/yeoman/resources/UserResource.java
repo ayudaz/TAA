@@ -54,11 +54,6 @@ public class UserResource {
 		userDao.delete(userId);
 	}
 	
-	@GET @Path("/{userId}/sessions")
-	public SessionResource getSessions(@PathParam("userId") int userId){
-		return new SessionResource(userId);
-	}
-	
 	@GET @Path("/test")
     @Produces(MediaType.TEXT_PLAIN)
     public String sayPlainTextHello() {

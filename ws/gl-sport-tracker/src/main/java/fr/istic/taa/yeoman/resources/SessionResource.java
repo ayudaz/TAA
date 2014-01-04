@@ -16,20 +16,19 @@ import fr.istic.taa.yeoman.dao.SessionDao;
 import fr.istic.taa.yeoman.entities.SessionImpl;
 import fr.istic.yeoman.api.Session;
 
+@Path("/sessions")
 public class SessionResource {
 	
 	SessionDao sessionDao;
-	int userId;
 	
-	public SessionResource(int userId){
+	public SessionResource(){
 		sessionDao = new SessionDao();
-		this.userId = userId;
 	}
 	
 	@GET
     @Produces({ MediaType.APPLICATION_JSON })
     public Collection<Session> getAllByUser() {
-        return sessionDao.getSessionsByUser(userId);
+        return sessionDao.getAll();
     }
 	
 	@GET @Path("/{sessionId}")
@@ -50,7 +49,7 @@ public class SessionResource {
 		sessionDao.update(session);
 	}
 	
-	@DELETE @Path("{sessionId}")
+	@DELETE @Path("/{sessionId}")
 	public void deleteSession(@PathParam("sessionId") int sessionId){
 		sessionDao.delete(sessionId);
 	}
