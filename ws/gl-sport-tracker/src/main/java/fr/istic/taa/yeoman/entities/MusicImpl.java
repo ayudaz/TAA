@@ -1,5 +1,6 @@
 package fr.istic.taa.yeoman.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,6 +21,10 @@ public class MusicImpl implements Music {
 	public String name;
 	public String path;
 	public List<Session> sessions;
+	
+	public MusicImpl() {
+		sessions = new ArrayList<Session>();
+	}
 
 	@Override
 	@Id

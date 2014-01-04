@@ -1,6 +1,6 @@
 package fr.istic.yeoman.api;
 
-public interface GPSPoint {
+public interface GpsPoint {
 	
 	// Attributes
 	public int getId();

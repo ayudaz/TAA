@@ -1,5 +1,6 @@
 package fr.istic.taa.yeoman.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,16 +11,20 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import fr.istic.yeoman.api.Course;
-import fr.istic.yeoman.api.GPSPoint;
+import fr.istic.yeoman.api.GpsPoint;
 import fr.istic.yeoman.api.Session;
 
 @Entity
 @Table(name="courses")
-public class CourseImpl implements Course{
+public class CourseImpl implements Course {
 	
 	private int id;
 	private Session session;
-	private List<GPSPoint> gpsPoints;
+	private List<GpsPoint> gpsPoints;
+	
+	public CourseImpl(){
+		gpsPoints = new ArrayList<GpsPoint>();
+	}
 	
 	@Override
 	@Id
@@ -45,13 +50,13 @@ public class CourseImpl implements Course{
 	}
 
 	@Override
-	@OneToMany(targetEntity=GPSPointImpl.class, mappedBy="course")
-	public List<GPSPoint> getGPSPoints() {
+	@OneToMany(targetEntity=GpsPointImpl.class, mappedBy="course")
+	public List<GpsPoint> getGPSPoints() {
 		return gpsPoints;
 	}
 
 	@Override
-	public void setGPSPoints(List<GPSPoint> gpsPoints){
+	public void setGPSPoints(List<GpsPoint> gpsPoints){
 		this.gpsPoints = gpsPoints;
 	}
 }

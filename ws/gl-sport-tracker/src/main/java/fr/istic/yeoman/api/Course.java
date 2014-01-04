@@ -11,6 +11,6 @@ public interface Course {
 	// Links with others interfaces
 	public Session getSession();
 	public void setSession(Session session);
-	public List<GPSPoint> getGPSPoints();
-	public void setGPSPoints(List<GPSPoint> gpsPoints);
+	public List<GpsPoint> getGPSPoints();
+	public void setGPSPoints(List<GpsPoint> gpsPoints);
 }

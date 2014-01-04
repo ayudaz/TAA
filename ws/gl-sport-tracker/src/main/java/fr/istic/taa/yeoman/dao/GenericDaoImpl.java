@@ -7,10 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 
-public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
+public abstract class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 	
 	private Class<T> entityClass;
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
 	public GenericDaoImpl(){
@@ -47,11 +47,11 @@ public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T,
 	}
 
 	@Override
-	public void delete(T t) {
+	public void delete(PK id) {
 		EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
-		t = this.entityManager.merge(t);
-		this.entityManager.remove(t);
+		T t = entityManager.find(entityClass, id);
+		entityManager.remove(t);
 		tx.commit();
 	}
 

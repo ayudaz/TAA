@@ -1,5 +1,6 @@
 package fr.istic.taa.yeoman.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,6 +23,10 @@ public class GoalImpl implements Goal {
 	public GoalType goalType;
 	public double value;
 	public List<Session> sessions;
+	
+	public GoalImpl() {
+		sessions = new ArrayList<Session>();
+	}
 
 	@Override
 	@Id

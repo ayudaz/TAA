@@ -1,6 +1,5 @@
 package fr.istic.yeoman.api;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -10,9 +9,9 @@ public interface Session {
 	public int getId();
 	public void setId(int id);
 	public Date getStartDate();
-	public void setStartDate(Timestamp startDate);
+	public void setStartDate(Date startDate);
 	public Date getEndDate();
-	public void setEndDate(Timestamp endDate);
+	public void setEndDate(Date endDate);
 	public Mode getMode();
 	public void setMode(Mode mode);
 	
@@ -36,4 +35,5 @@ public interface Session {
 	public void setCourse(Course course);
 	public User getUser();
 	public void setUser(User user);
+	public void setUser(User user, boolean add);
 }

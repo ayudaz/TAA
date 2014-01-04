@@ -34,6 +34,7 @@ public interface User {
 	// Links with others interfaces
 	public List<Session> getSessions();
 	public void addSession(Session session);
+	public void addSession(Session session, boolean set);
 	public void removeSession(Session session);
 	public void emptySession();
 	public void setSessions(List<Session> sessions);

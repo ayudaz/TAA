@@ -1,18 +1,21 @@
 package fr.istic.taa.yeoman.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import fr.istic.yeoman.api.Session;
 import fr.istic.yeoman.api.User;
@@ -21,6 +24,7 @@ import fr.istic.yeoman.api.User;
 
 @Entity
 @Table(name="users")
+@XmlRootElement
 public class UserImpl implements User {
 
 	private int id;
@@ -37,6 +41,10 @@ public class UserImpl implements User {
 	private String avatar;
 	private List<Session> sessions;
 	
+	public UserImpl(){
+		sessions = new ArrayList<Session>();
+	}
+	
 	@Override
 	@Id
 	@GeneratedValue
@@ -47,7 +55,7 @@ public class UserImpl implements User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	@Override
 	public String getLastName() {
 		return lastName;
@@ -56,7 +64,7 @@ public class UserImpl implements User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	@Override
 	public String getFirstName() {
 		return firstName;
@@ -90,7 +98,7 @@ public class UserImpl implements User {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	@Column(length=30)
+	@Column(length=30, unique=true, nullable=false)
 	@Override
 	public String getPseudo() {
 		return pseudo;
@@ -99,6 +107,7 @@ public class UserImpl implements User {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
+	@Column(nullable=false)
 	@Override
 	public boolean getSex() {
 		return sex;
@@ -125,7 +134,7 @@ public class UserImpl implements User {
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
 	}
-	@Column(length=100)
+	@Column(length=100, nullable=false, unique=true)
 	@Override
 	public String getMail() {
 		return mail;
@@ -143,7 +152,9 @@ public class UserImpl implements User {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	@OneToMany(targetEntity=SessionImpl.class, mappedBy="user", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(targetEntity=SessionImpl.class, mappedBy="user")
+	@XmlTransient
+	@JsonIgnore
 	@Override
 	public List<Session> getSessions() {
 		return sessions;
@@ -154,11 +165,26 @@ public class UserImpl implements User {
 	}
 	@Override
 	public void addSession(Session session) {
-		sessions.add(session);
+		addSession(session, true);
+	}
+	
+	public void addSession(Session session, boolean set){
+		if (session != null) {
+            if(getSessions().contains(session)) {
+                getSessions().set(getSessions().indexOf(session), session);
+            }
+            else {
+                getSessions().add(session);
+            }
+            if (set) {
+                session.setUser((User)this, false);
+            }
+        }
 	}
 	@Override
 	public void removeSession(Session session) {
-		sessions.remove(session);
+		getSessions().remove(session);
+		session.setUser(null);
 	}
 	@Override
 	public void emptySession() {

@@ -1,6 +1,6 @@
 package fr.istic.taa.yeoman.entities;
 
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -40,6 +41,10 @@ public class SessionImpl implements Session {
 	private Weather weather;
 	private Goal goal;
 	private Course course;
+	
+	public SessionImpl() {
+		musics = new ArrayList<Music>();
+	}
 	
 	/**
 	 * @return the id
@@ -72,7 +77,7 @@ public class SessionImpl implements Session {
 	 * @param startDate the dateDebut to set
 	 */
 	@Override
-	public void setStartDate(Timestamp startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
@@ -89,7 +94,7 @@ public class SessionImpl implements Session {
 	 * @param dateFin the dateFin to set
 	 */
 	@Override
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	
@@ -192,13 +197,20 @@ public class SessionImpl implements Session {
 	
 	@Override
 	@ManyToOne(targetEntity=UserImpl.class)
+	@JoinColumn(name="user_id", referencedColumnName = "id")
 	public User getUser() {
 		return user;
 	}
 	
 	@Override
 	public void setUser(User user) {
-		this.user = user;
+		setUser(user, true);
 	}
-	
+
+	public void setUser(User user, boolean add) {
+		this.user = user;
+		if(user != null && add){
+			user.addSession(this, false);
+		}
+	}
 }

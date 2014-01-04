@@ -7,11 +7,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import fr.istic.yeoman.api.Course;
-import fr.istic.yeoman.api.GPSPoint;
+import fr.istic.yeoman.api.GpsPoint;
 
 @Entity
 @Table(name="gpspoints")
-public class GPSPointImpl implements GPSPoint {
+public class GpsPointImpl implements GpsPoint {
 	
 	public int id;
 	public double x;
