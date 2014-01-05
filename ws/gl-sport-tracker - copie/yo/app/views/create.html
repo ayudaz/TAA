@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  	<h3>Inscription</h3>
+  
+	<form name="appForm" novalidate class="app-form">
+		<label>First name</label> : 
+		<input type="text" name="firstName"	ng-model="user.firstName” required><br/>
+		
+		<label>Last name</label> : 
+		<input type="text" name="lastName" ng-model="user.lastName" required><br />
+		
+		<label>Email</label> : 
+		<input type="email" name="email"	ng-model="user.email" required><br />
+		
+		<label>Gender</label> :
+		<input type="radio" name="gender" ng-model="user.gender" value="male">Male 
+		<input type="radio" name="gender" ng-model="user.gender" value="female"> Female<br />
+		
+		<button ng-click="save()">Register</button>
+	</form>
+</div>
+

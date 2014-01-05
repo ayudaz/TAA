@@ -1,0 +1,18 @@
+<div class="do-marginLeft">
+  	<h3 style="text-align:center">Authentification</h3>
+  	
+  	<p style="text-align:center"> Cette page nécessite une authentification </p>
+  	
+	<form name='loginForm' ng-submit="connexion(loginForm)">
+	 	Login: <input name='login' class="normal-input" required type='email' ng-model='user.login'/> <br />
+	 	<span ng-show='loginForm.login.$dirty && loginForm.login.$error.required' class="error">A login is required</span>
+	  	<span ng-show='loginForm.login.$error.email' class="error">Your login should be a valid email</span>
+	 	<br />
+	  	
+	  	Mot de passe: <input name='password' type='password' required class="normal-input" ng-model='user.password'/><br /><br />  
+	 
+		<input ng-disabled="loginForm.$invalid" class="btn btn-primary btn-lg" type="submit" value="Se connecter">
+	 </form>
+
+ 	<a href="/create" alt="Creer un compte" />Pas encore de compte?</a>
+ </div>
