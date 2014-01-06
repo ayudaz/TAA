@@ -31,6 +31,12 @@ public class UserResource {
         return userDao.findAll();
     }
 	
+	@GET @Path("/{userMail}/{userPassword}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public User getUserByMailPassword(@PathParam("userMail") String userMail, @PathParam("userPassword") String userPassword){
+		return userDao.findByMailPassword(userMail, userPassword);
+	}
+	
 	@GET @Path("/{userId}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public User get(@PathParam("userId") int userId){

@@ -38,6 +38,7 @@ public class UserImpl implements User {
 	private String facebook;
 	private String twitter;
 	private String mail;
+	private String password;
 	private String avatar;
 	private List<Session> sessions;
 	
@@ -142,6 +143,15 @@ public class UserImpl implements User {
 	@Override
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	@Column(nullable=false)
+	@Override
+	public String getPassword(){
+		return password;
+	}
+	@Override
+	public void setPassword(String password){
+		this.password = password;
 	}
 	@Column(length=100)
 	@Override

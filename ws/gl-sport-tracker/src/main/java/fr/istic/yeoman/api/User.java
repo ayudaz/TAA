@@ -28,6 +28,8 @@ public interface User {
 	public void setTwitter(String twitter);
 	public String getMail();
 	public void setMail(String mail);
+	public String getPassword();
+	public void setPassword(String password);
 	public String getAvatar();
 	public void setAvatar(String avatar);
 	
@@ -38,4 +40,5 @@ public interface User {
 	public void removeSession(Session session);
 	public void emptySession();
 	public void setSessions(List<Session> sessions);
+	
 }
