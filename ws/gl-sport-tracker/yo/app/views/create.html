@@ -1,21 +1,25 @@
 <div class="jumbotron">
   	<h3>Inscription</h3>
   
-	<form name="appForm" novalidate class="app-form">
-		<label>First name</label> : 
-		<input type="text" name="firstName"	ng-model="user.firstName” required><br/>
-		
-		<label>Last name</label> : 
-		<input type="text" name="lastName" ng-model="user.lastName" required><br />
-		
-		<label>Email</label> : 
-		<input type="email" name="email"	ng-model="user.email" required><br />
-		
-		<label>Gender</label> :
-		<input type="radio" name="gender" ng-model="user.gender" value="male">Male 
-		<input type="radio" name="gender" ng-model="user.gender" value="female"> Female<br />
-		
-		<button ng-click="save()">Register</button>
-	</form>
+	<form name="myForm">
+    
+        <label>Prenom:</label><br/>
+        <input type="text" ng-model="form.prenom" required/> <br/>
+    	<label>Nom:</label><br/>
+        <input type="text" ng-model="form.nom" required/> <br/><br/>
+        
+        
+        <input type="button" value="select" onclick="displayDatePicker('ADate');">
+        
+        <label>Adresse:</label> <br/>
+        <input type="text" ng-model="form.address.line1" size="33" required/> <br/>
+        <input type="text" ng-model="form.address.city" size="12" required/>,
+        <input type="text" ng-model="form.address.state" size="2" ng-pattern="state" required/>
+        <input type="text" ng-model="form.address.zip" size="5" ng-pattern="zip" required/><br/><br/>
+    
+        
+      <button ng-click="cancel()" ng-disabled="isCancelDisabled()">Cancel</button>
+      <button ng-click="save()" ng-disabled="isSaveDisabled()">Save</button>
+    </form>
 </div>
 

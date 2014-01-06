@@ -26,18 +26,15 @@
 			<a href="index" alt="Home">
 				<img class="logo" src="images/logo.png" alt="Logo" />
 			</a>
-			<button ng-show="authentified == 'active'" type="button" class="btn btn-default navbar-btn pull-right logout">Déconnexion</button>
+			<button ng-show="isAuthentified == 'active'" type="button" class="btn btn-default navbar-btn pull-right logout">Déconnexion</button>
 		</nav>
 
 		<aside id="left-aside">
-			<script>
-				console.log(document.URL);
-			</script>
 			<div class="list-group">
-				<a href="accueil" class="list-group-item active">Accueil</a> 
-				<a href="profil/42" class="list-group-item">Profil</a>
-				<a href="courses/42" class="list-group-item">Mes courses</a>
-				<a href="amis/42" class="list-group-item">Amis</a> 
+				<a href="accueil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Accueil</a> 
+				<a href="profil/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Profil</a>
+				<a href="courses/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Mes courses</a>
+				<a href="amis/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Amis</a> 
 			</div>
 		</aside>
 		<section id="main-content" ng-view>

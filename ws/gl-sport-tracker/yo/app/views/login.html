@@ -2,7 +2,7 @@
   	<h3 style="text-align:center">Authentification</h3>
   	
   	<p style="text-align:center"> Cette page nécessite une authentification </p>
-  	
+  	<p style="color:red; font-weight:bold" ng-show="incorrect">Identifiant ou mot de passe incorrect</p>
 	<form name='loginForm' ng-submit="connexion(loginForm)">
 	 	Login: <input name='login' class="normal-input" required type='email' ng-model='user.login'/> <br />
 	 	<span ng-show='loginForm.login.$dirty && loginForm.login.$error.required' class="error">A login is required</span>
