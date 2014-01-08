@@ -6,6 +6,9 @@ import java.lang.reflect.ParameterizedType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.hibernate.JDBCException;
+import org.hibernate.exception.ConstraintViolationException;
+
 
 public abstract class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 	

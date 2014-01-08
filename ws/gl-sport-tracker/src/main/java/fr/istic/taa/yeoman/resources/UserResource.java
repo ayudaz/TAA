@@ -2,6 +2,7 @@ package fr.istic.taa.yeoman.resources;
 
 import java.util.Collection;
 
+import javax.persistence.RollbackException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -11,6 +12,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.hibernate.JDBCException;
+import org.hibernate.exception.ConstraintViolationException;
 
 import fr.istic.taa.yeoman.dao.UserDao;
 import fr.istic.taa.yeoman.entities.UserImpl;
@@ -45,8 +49,14 @@ public class UserResource {
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void add(UserImpl user){
-		userDao.create(user);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int add(UserImpl user){
+		try{
+			User u = userDao.create(user);
+			return u.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{userId}")
