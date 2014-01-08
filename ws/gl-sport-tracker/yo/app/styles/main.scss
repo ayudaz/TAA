@@ -5,10 +5,18 @@
     padding: 0.2em 0;
 }
 
+html{
+	height:100%;
+}
 /* Space out content a bit */
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+	background-color:white;
+	background-image:url(../images/sport.png);
+	background-repeat:no-repeat;
+	background-position:100% 100%;
+	min-height:100%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -107,7 +115,7 @@ body {
 }
 
 #main-content{
-	width:79%;
+	width:75%;
 float:right;
 display:inline-block;
 	margin-left:5px;

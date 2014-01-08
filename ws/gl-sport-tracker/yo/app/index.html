@@ -31,10 +31,10 @@
 
 		<aside id="left-aside">
 			<div class="list-group">
-				<a href="accueil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Accueil</a> 
-				<a href="profil/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Profil</a>
-				<a href="courses/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Mes courses</a>
-				<a href="amis/42" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Amis</a> 
+				<a href="#accueil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Accueil</a> 
+				<a href="#profil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Profil</a>
+				<a href="#courses" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Mes courses</a>
+				<a href="#amis" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Amis</a> 
 			</div>
 		</aside>
 		<section id="main-content" ng-view>
@@ -69,6 +69,7 @@
     <script src="scripts/controllers/courses.js"></script>
     <script src="scripts/controllers/404.js"></script>
     <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/create.js"></script>
     <!-- endbuild -->
 </body>
 </html>
