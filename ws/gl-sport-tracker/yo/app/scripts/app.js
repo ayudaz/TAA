@@ -7,7 +7,6 @@ var app = angular.module('yoApp', [
                          'ngRoute'
                        ])
 .config(function($locationProvider, $routeProvider) {
-  //$locationProvider.html5Mode(true);
   $routeProvider
     .when('/', {
       templateUrl: 'views/accueil.html', 
@@ -42,6 +41,7 @@ var app = angular.module('yoApp', [
       controller: 'NotFoundCtrl'
     })
     .otherwise({ redirectTo: '/' });
+  
 });
 
 app.factory('User', ['$resource', function($resource) {
@@ -57,14 +57,17 @@ app.factory('User', ['$resource', function($resource) {
 }]);
 
 app.factory('User', ['$resource', function($resource) {
-	return $resource('rest/users/:userId', 
-		{ userId: '@userId' }, { 
-			specialMethod: { method: 'PUT', params: { bookId: '@userId' }, isArray: false },
+	return $resource('rest/users/:userId', { userId: '@userId' }, { 
+			specialMethod: { method: 'PUT', params: { userId: '@userId' }, isArray: false },
 			connexion : {method: 'GET', params: {email: '@email', mdp: '@mdp'}}
 			/*get: { method : 'GET', isArray : true}*/
 		});
-
 }]);
+
+app.factory('Connexion', ['$resource', function($resource) {
+	return $resource('rest/users/:email/:mdp', { email: '@email', mdp:'@mdp' }, {});
+}]);
+
 
 app.factory('Session', ['$resource', function($resource) {
 	return $resource('rest/sessions/:userId', 

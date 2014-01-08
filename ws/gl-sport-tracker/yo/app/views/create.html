@@ -1,25 +1,37 @@
-<div class="jumbotron">
-  	<h3>Inscription</h3>
-  
-	<form name="myForm">
-    
-        <label>Prenom:</label><br/>
-        <input type="text" ng-model="form.prenom" required/> <br/>
-    	<label>Nom:</label><br/>
-        <input type="text" ng-model="form.nom" required/> <br/><br/>
-        
-        
-        <input type="button" value="select" onclick="displayDatePicker('ADate');">
-        
-        <label>Adresse:</label> <br/>
-        <input type="text" ng-model="form.address.line1" size="33" required/> <br/>
-        <input type="text" ng-model="form.address.city" size="12" required/>,
-        <input type="text" ng-model="form.address.state" size="2" ng-pattern="state" required/>
-        <input type="text" ng-model="form.address.zip" size="5" ng-pattern="zip" required/><br/><br/>
-    
-        
-      <button ng-click="cancel()" ng-disabled="isCancelDisabled()">Cancel</button>
-      <button ng-click="save()" ng-disabled="isSaveDisabled()">Save</button>
+<div>
+<div class="header">
+  	<h3 class="text-muted" style="margin-top:0;">Inscription</h3>
+  </div>
+  	<p class="error" style="margin-bottom:30px; font-size:16px" ng-hide="correctFields">Renseignements incorrects</p>
+	<form name="myForm" ng-submit="createUser(myForm)">
+	  <div style="display:inline-block; width:40%">
+	  <label>Nom:</label><br/>
+        <input type="text" ng-model="user.lastName" required/> <br/><br />
+    	<label>Prenom:</label><br/>
+        <input type="text" ng-model="user.firstName" required/> <br/><br/>
+    	<label>Mail:</label><br/>
+        <input type="email" ng-model="user.mail" required/> <br/><br/>
+    	<label>Pseudo:</label><br/>
+        <input type="text" ng-model="user.pseudo" required/> <br/><br/>
+        <label>Sexe:</label><br/>
+      	<input type="radio" ng-model="user.sex" value="true"> Homme 
+      	<input type="radio" ng-model="user.sex" value="false"> Femme <br/><br/> 
+	  </div>
+	  <div style="display:inline-block; vertical-align:top; width:40%;">
+	  	<label>Date de naissance:</label><br/>
+        <input type="date" ng-model="user.birthDay" required/> <br/><br/>
+      	<label>Taille (cm):</label><br/>
+        <input type="text" ng-model="user.size" required/> <br/><br/>        
+      	<label>Poids (kg):</label><br/>
+        <input type="text" ng-model="user.weight" required/> <br/><br/> 
+      	<label>Mot de passe:</label><br/>
+        <input type="password" ng-model="user.password" required/> <br/><br/>
+        <button type="submit" style="margin-top:10px;" class="btn btn-success" ng-disabled="myForm.$invalid">Je m'inscris !</button>
+	  </div>
+                
+    	    	
+      	
+      
     </form>
 </div>
 
