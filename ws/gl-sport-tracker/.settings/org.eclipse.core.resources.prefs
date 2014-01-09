@@ -1,7 +1,12 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/test/java=UTF-8
-encoding//yo/app/views/accueil.html=UTF-8
-encoding//yo/app/views/create.html=UTF-8
-encoding//yo/app/views/login.html=UTF-8
+encoding//yo/app/views/main/404.html=UTF-8
+encoding//yo/app/views/main/accueil.html=UTF-8
+encoding//yo/app/views/main/create.html=UTF-8
+encoding//yo/app/views/main/login.html=UTF-8
+encoding//yo/app/views/profil/profil.html=UTF-8
+encoding//yo/app/views/sessions/session-detail.html=UTF-8
+encoding//yo/app/views/sessions/session-new.html=UTF-8
+encoding//yo/app/views/sessions/sessions.html=UTF-8
 encoding/<project>=UTF-8

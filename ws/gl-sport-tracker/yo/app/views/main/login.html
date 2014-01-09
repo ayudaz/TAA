@@ -1,12 +1,12 @@
 <div>
-<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
+	<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
 		
 	<div class="header">
 		<h3 class="text-muted" style="margin-top: 0;">Authentification</h3>
 	</div>
 
 	<p style="text-align: center">Cette page nécessite une authentification</p>
-	<p style="color: red; font-weight: bold" ng-show="badLogin">Identifiant	ou mot de passe incorrect</p>
+	<p style="color: red; font-weight: bold" ng-show="badLogin">Identifiant ou mot de passe incorrect</p>
 
 	<form name='loginForm' ng-submit="connexion(loginForm)">
 		<div style="display: inline-block; width: 40%">

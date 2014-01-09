@@ -1,0 +1,36 @@
+<div>
+	<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
+
+	<div class="header">
+  		<h3 class="text-muted" style="margin-top:0;">Mon profil</h3>
+ 	 </div>
+
+	 <div style="display:inline-block; width:40%">
+	  	<b>Nom:</b><br/>
+        {{user.lastName}} <br/><br />
+    	<b>Prenom:</b><br/>
+        {{user.firstName}} <br/><br/>
+    	<b>Mail:</b><br/>
+        {{user.mail}} <br/><br/>
+    	<b>Pseudo:</b><br/>
+        {{user.pseudo}} <br/><br/>
+        <a href="#profil/edit/all"  style="margin-top:10px;" class="btn btn-primary"> Editer mon profil</a> 
+	  </div>
+	  <div style="display:inline-block; vertical-align:top; width:40%;">
+	  	<b>Date de naissance:</b><br/>
+        {{user.birthDay}}<br/><br/>
+      	<b>Taille (cm):</b><br/>
+        {{user.size}} <br/><br/>        
+      	<b>Poids (kg):</b><br/>
+        {{user.weight}} <br/><br/>
+        <b>Sexe:</b><br/>
+        <span ng-show="!user.sex">
+      		Femme
+    	</span>
+    	<span ng-show="user.sex">
+      		Homme
+    	</span><br/><br/>
+    	<a href="#profil/edit/password" style="margin-top:10px;" class="btn btn-info"> Changer de mot de passe</a> 
+	  </div>
+	
+</div>

@@ -1,8 +1,14 @@
 <div>
-<div class="header">
-  	<h3 class="text-muted" style="margin-top:0;">Inscription</h3>
-  </div>
+	<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
+
+	<div class="header">
+  		<h3 class="text-muted" style="margin-top:0;">Inscription</h3>
+  	</div>
+  	
+  	
   	<p class="error" style="margin-bottom:30px; font-size:16px" ng-hide="correctFields">Renseignements incorrects</p>
+  	<p class="error" style="margin-bottom:30px; font-size:16px" ng-hide="stillUsed">Pseudo ou/et email déjà utilisé(s)</p>
+	
 	<form name="myForm" ng-submit="createUser(myForm)">
 	  <div style="display:inline-block; width:40%">
 	  <label>Nom:</label><br/>
@@ -28,10 +34,6 @@
         <input type="password" ng-model="user.password" required/> <br/><br/>
         <button type="submit" style="margin-top:10px;" class="btn btn-success" ng-disabled="myForm.$invalid">Je m'inscris !</button>
 	  </div>
-                
-    	    	
-      	
-      
-    </form>
+	</form>
 </div>
 
