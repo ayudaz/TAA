@@ -12,7 +12,7 @@ angular.module('yoApp')
 		$location.path('/login');
 	}
 	else{
-	    $scope.user = User.get({userId: $scope.userId});
-	    //console.log($scope.user);
+	    $scope.allUser = User.getAll();
+	    
 	}
  });

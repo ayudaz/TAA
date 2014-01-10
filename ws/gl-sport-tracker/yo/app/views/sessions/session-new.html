@@ -4,3 +4,14 @@
 	<div class="header">
   		<h3 class="text-muted" style="margin-top:0;">Nouvelle session</h3>
   	</div>
+  	
+	
+	<form name="myForm" ng-submit="createSession(myForm)">
+	
+        <p> La session va être simulée afin de compléter les données manquantes </p> <br /> <br />
+        
+        <button type="submit" style="margin-top:10px;text-align:center; width:100%;" class="btn btn-success" ng-disabled="myForm.$invalid">> > > > Go !</button>
+	 
+    </form>
+	
+</div>

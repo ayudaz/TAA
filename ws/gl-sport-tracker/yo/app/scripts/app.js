@@ -59,7 +59,8 @@ var app = angular.module('yoApp', [
 
 app.factory('User', ['$resource', function($resource) {
 	return $resource('rest/users/:userId', { userId: '@userId' }, 
-			{ update: { method: 'PUT' }
+			{ update: { method: 'PUT' },
+				getAll: {method: 'GET', isArray: true }
 		});
 }]);
 
@@ -69,9 +70,10 @@ app.factory('Connexion', ['$resource', function($resource) {
 
 
 app.factory('Session', ['$resource', function($resource) {
-	return $resource('rest/sessions/:userId', 
-		{ userId: '@userId' }, { 
-			specialMethod: { method: 'PUT', params: { bookId: '@userId' }, isArray: false }
+	return $resource('rest/sessions/:sessionId', 
+		{ sessionId: '@sessionId' }, { 
+			specialMethod: { method: 'PUT', params: { bookId: '@userId' }, isArray: false },
+			getAll: { method: 'GET', isArray: true }
 		});
 
 }]);
@@ -122,3 +124,18 @@ app.controller('MainCtrl', function ($scope, $location, $cookieStore, User, Conn
 	};
 	    
  });
+
+function convertTimestampToFormatedDate(timestamp){
+	var date = new Date(timestamp);
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var seconds = date.getSeconds();
+	var month = parseInt(date.getMonth()+1);
+	var day = parseInt(date.getUTCDate()+1);
+	var year = date.getFullYear();
+	
+	var formattedTime = day+'/'+month+'/'+year+' '+hours + ':' + minutes + ':' + seconds;
+
+	
+	return formattedTime;
+}
