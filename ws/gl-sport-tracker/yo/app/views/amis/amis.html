@@ -1,0 +1,35 @@
+<div>
+	<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
+
+	<div class="header">
+  		<h3 class="text-muted" style="margin-top:0;">Amis</h3>
+  	</div>
+  	
+  	
+  	Ajoutez vos amis ! <br /><br />
+  	
+  	<div ng-show='allUser.length != 0'>
+  		<table class="table table-striped">
+  			<thead style="font-weight:bold">
+       			<tr>
+            		<td>Nom</td>
+            		<td>Prenom</td>
+            		<td>Pseudo</td>
+            		<td>#</td>
+        		</tr>
+       		</thead>
+       		<tbody>
+        		<tr ng-repeat="ami in allUser">
+        			<td>{{ami.lastName}}</td>
+        			<td>{{ami.firstName}}</td>
+        			<td>{{ami.pseudo}}</td>
+        			<td><button type="button" class="btn btn-info btn-xs" disabled="disabled">Ajouter</button></td>  			
+  				</tr>
+			</tbody>
+		</table>  		
+  	</div>
+  	
+  	<div ng-show='allUser.length == 0'>
+  		Aucun autre membre...	
+  	</div>
+</div>

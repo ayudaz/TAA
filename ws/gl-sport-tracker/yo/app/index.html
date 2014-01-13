@@ -21,26 +21,25 @@
   </head>
   <body ng-app="yoApp">
     
-    <div class="container">
+    <div class="container" ng-controller="MainCtrl">
 		<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-			<a href="index" alt="Home">
+			<a href="#accueil" alt="Home">
 				<img class="logo" src="images/logo.png" alt="Logo" />
 			</a>
-			<button ng-show="isAuthentified == 'active'" type="button" class="btn btn-default navbar-btn pull-right logout">Déconnexion</button>
+			<a href="" ng-click="deco()" class="btn btn-default navbar-btn pull-right logout">Déconnexion</a>
 		</nav>
 
 		<aside id="left-aside">
 			<div class="list-group">
-				<a href="#accueil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Accueil</a> 
-				<a href="#profil" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Profil</a>
-				<a href="#courses" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Mes courses</a>
-				<a href="#amis" class="list-group-item" ng-class="{'active': currentPage == 'accueil'}">Amis</a> 
+				<a href="#accueil" class="list-group-item" ng-class="{'active': page.page() == 'accueil'}">Accueil</a> 
+				<a href="#profil" class="list-group-item" ng-class="{'active': page.page() == 'profil'}">Profil</a>
+				<a href="#session" class="list-group-item" ng-class="{'active': page.page() == 'sessions'}">Mes sessions</a>
+				<a href="#amis" class="list-group-item" ng-class="{'active': page.page() == 'amis'}">Amis</a> 
 			</div>
 		</aside>
 		<section id="main-content" ng-view>
-			Nothing loaded ... :-(
+			Nothing loaded ... :'(
 		</section>
-    
     </div>
 
 
@@ -66,7 +65,7 @@
     <script src="scripts/controllers/accueil.js"></script>
     <script src="scripts/controllers/profil.js"></script>
     <script src="scripts/controllers/amis.js"></script>
-    <script src="scripts/controllers/courses.js"></script>
+    <script src="scripts/controllers/sessions.js"></script>
     <script src="scripts/controllers/404.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/create.js"></script>

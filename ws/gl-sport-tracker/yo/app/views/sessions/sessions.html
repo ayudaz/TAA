@@ -1,0 +1,40 @@
+<div>
+	<p class="error" style="text-align:center; font-size:15px;" ng-show="erreurServeur">Une erreur interne a été rencontrée. Merci de réessayer</p>
+
+	<div class="header">
+  		<h3 class="text-muted" style="margin-top:0;">Mes sessions</h3>
+  	</div>
+  	
+  	<h3>Retrouvez ici toutes vos sessions ! </h3><br />
+  	
+  	<div ng-show='userSessions.length != 0'>
+  		<table class="table table-striped">
+  			<thead>
+       			<tr>
+            		<td>#</td>
+            		<td>Mode</td>
+            		<td>Date de début</td>
+            		<td>Date de fin</td>
+            		<td>Détail</td>
+        		</tr>
+       		</thead>
+       		<tbody>
+        		<tr ng-repeat="session in userSessions">
+        			<td>{{$index}}</td>
+        			<td>--</td>
+        			<td>{{session.startDate | formatDate}}</td>
+        			<td>{{session.endDate | formatDate}}</td>
+        			<td><a href="#session/{{session.id}}" alt="Voir le détail de la session">Voir</a></td>  			
+  				</tr>
+			</tbody>
+		</table>  		
+  	</div>
+  	
+  	<div ng-show='userSessions.length == 0'>
+  		Aucune session enregistrée...		
+  	</div>
+  	
+  	<br /><br />
+  	<a href="#session/new" style="margin-top:10px; width:100%; text-align:center;" class="btn  btn-success btn-lg"> > > >  Nouvelle session   </a> 
+  	
+</div>
