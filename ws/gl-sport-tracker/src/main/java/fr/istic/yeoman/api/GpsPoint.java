@@ -1,5 +1,7 @@
 package fr.istic.yeoman.api;
 
+import fr.istic.taa.yeoman.entities.CourseImpl;
+
 public interface GpsPoint {
 	
 	// Attributes
@@ -15,7 +17,7 @@ public interface GpsPoint {
 	public void setHeartRate(double heartRate);
 	
 	// Links with others interfaces
-	public Course getCourse();
-	public void setCourse(Course course);
+	public CourseImpl getCourse();
+	public void setCourse(CourseImpl course);
 	
 }

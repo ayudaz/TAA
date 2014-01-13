@@ -3,6 +3,13 @@ package fr.istic.yeoman.api;
 import java.util.Date;
 import java.util.List;
 
+import fr.istic.taa.yeoman.entities.CourseImpl;
+import fr.istic.taa.yeoman.entities.GoalImpl;
+import fr.istic.taa.yeoman.entities.MusicImpl;
+import fr.istic.taa.yeoman.entities.SportTypeImpl;
+import fr.istic.taa.yeoman.entities.UserImpl;
+import fr.istic.taa.yeoman.entities.WeatherImpl;
+
 public interface Session {
 	
 	// Attributes
@@ -20,20 +27,20 @@ public interface Session {
 	public void stop();
 	
 	// link with other interfaces
-	public SportType getSportType();
-	public void setSportType(SportType sportType);
-	public List<Music> getMusics();
-	public void setMusics(List<Music> musics);
-	public void addMusic(Music music);
-	public void removeMusic(Music music);
+	public SportTypeImpl getSportType();
+	public void setSportType(SportTypeImpl sportType);
+	public List<MusicImpl> getMusics();
+	public void setMusics(List<MusicImpl> musics);
+	public void addMusic(MusicImpl music);
+	public void removeMusic(MusicImpl music);
 	public void emptyMusic();
-	public Weather getWeather();
-	public void setWeather(Weather weather);
-	public Goal getGoal();
-	public void setGoal(Goal goal);
-	public Course getCourse();
-	public void setCourse(Course course);
-	public User getUser();
-	public void setUser(User user);
-	public void setUser(User user, boolean add);
+	public WeatherImpl getWeather();
+	public void setWeather(WeatherImpl weather);
+	public GoalImpl getGoal();
+	public void setGoal(GoalImpl goal);
+	public CourseImpl getCourse();
+	public void setCourse(CourseImpl course);
+	public UserImpl getUser();
+	public void setUser(UserImpl user);
+	public void setUser(UserImpl user, boolean add);
 }

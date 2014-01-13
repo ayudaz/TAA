@@ -18,14 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import fr.istic.yeoman.api.Course;
-import fr.istic.yeoman.api.Goal;
 import fr.istic.yeoman.api.Mode;
-import fr.istic.yeoman.api.Music;
 import fr.istic.yeoman.api.Session;
-import fr.istic.yeoman.api.SportType;
-import fr.istic.yeoman.api.User;
-import fr.istic.yeoman.api.Weather;
 
 @Entity
 @Table(name="sessions")
@@ -35,15 +29,15 @@ public class SessionImpl implements Session {
 	private Date startDate;
 	private Date endDate;
 	private Mode mode;
-	private User user;
-	private SportType sportType;
-	private List<Music> musics;
-	private Weather weather;
-	private Goal goal;
-	private Course course;
+	private UserImpl user;
+	private SportTypeImpl sportType;
+	private List<MusicImpl> musics;
+	private WeatherImpl weather;
+	private GoalImpl goal;
+	private CourseImpl course;
 	
 	public SessionImpl() {
-		musics = new ArrayList<Music>();
+		musics = new ArrayList<MusicImpl>();
 	}
 	
 	/**
@@ -127,33 +121,33 @@ public class SessionImpl implements Session {
 	
 	@Override
 	@ManyToOne(targetEntity=SportTypeImpl.class)
-	public SportType getSportType() {
+	public SportTypeImpl getSportType() {
 		return sportType;
 	}
 
 	@Override
-	public void setSportType(SportType sportType) {
+	public void setSportType(SportTypeImpl sportType) {
 		this.sportType = sportType;
 	}
 	
 	@Override
 	@ManyToMany(targetEntity=MusicImpl.class, mappedBy="sessions")
-	public List<Music> getMusics() {
+	public List<MusicImpl> getMusics() {
 		return musics;
 	}
 	
 	@Override
-	public void setMusics(List<Music> musics){
+	public void setMusics(List<MusicImpl> musics){
 		this.musics = musics;
 	}
 	
 	@Override
-	public void addMusic(Music music) {
+	public void addMusic(MusicImpl music) {
 		musics.add(music);
 	}
 	
 	@Override
-	public void removeMusic(Music music) {
+	public void removeMusic(MusicImpl music) {
 		musics.remove(music);
 	}
 	
@@ -164,50 +158,50 @@ public class SessionImpl implements Session {
 	
 	@Override
 	@OneToOne(targetEntity=WeatherImpl.class)
-	public Weather getWeather() {
+	public WeatherImpl getWeather() {
 		return weather;
 	}
 	
 	@Override
-	public void setWeather(Weather weather) {
+	public void setWeather(WeatherImpl weather) {
 		this.weather = weather; 
 	}
 	
 	@Override
 	@OneToOne(targetEntity=GoalImpl.class)
-	public Goal getGoal() {
+	public GoalImpl getGoal() {
 		return goal;
 	}
 	
 	@Override
-	public void setGoal(Goal goal) {
+	public void setGoal(GoalImpl goal) {
 		this.goal = goal;
 	}
 	
 	@Override
 	@OneToOne(targetEntity=CourseImpl.class)
-	public Course getCourse() {
+	public CourseImpl getCourse() {
 		return course;
 	}
 	
 	@Override
-	public void setCourse(Course course) {
+	public void setCourse(CourseImpl course) {
 		this.course = course;
 	}
 	
 	@Override
 	@ManyToOne(targetEntity=UserImpl.class)
 	@JoinColumn(name="user_id", referencedColumnName = "id")
-	public User getUser() {
+	public UserImpl getUser() {
 		return user;
 	}
 	
 	@Override
-	public void setUser(User user) {
+	public void setUser(UserImpl user) {
 		setUser(user, true);
 	}
 
-	public void setUser(User user, boolean add) {
+	public void setUser(UserImpl user, boolean add) {
 		this.user = user;
 		if(user != null && add){
 			user.addSession(this, false);

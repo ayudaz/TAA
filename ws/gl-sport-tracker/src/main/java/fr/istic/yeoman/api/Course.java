@@ -2,6 +2,9 @@ package fr.istic.yeoman.api;
 
 import java.util.List;
 
+import fr.istic.taa.yeoman.entities.GpsPointImpl;
+import fr.istic.taa.yeoman.entities.SessionImpl;
+
 public interface Course {
 	
 	// Attributes
@@ -9,8 +12,8 @@ public interface Course {
 	public void setId(int id);
 	
 	// Links with others interfaces
-	public Session getSession();
-	public void setSession(Session session);
-	public List<GpsPoint> getGPSPoints();
-	public void setGPSPoints(List<GpsPoint> gpsPoints);
+	public SessionImpl getSession();
+	public void setSession(SessionImpl session);
+	public List<GpsPointImpl> getGPSPoints();
+	public void setGPSPoints(List<GpsPointImpl> gpsPoints);
 }

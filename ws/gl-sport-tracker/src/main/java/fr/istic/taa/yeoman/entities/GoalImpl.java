@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import fr.istic.yeoman.api.Goal;
 import fr.istic.yeoman.api.GoalType;
-import fr.istic.yeoman.api.Session;
 
 @Entity
 @Table(name="goals")
@@ -22,10 +21,10 @@ public class GoalImpl implements Goal {
 	public int id;
 	public GoalType goalType;
 	public double value;
-	public List<Session> sessions;
+	public List<SessionImpl> sessions;
 	
 	public GoalImpl() {
-		sessions = new ArrayList<Session>();
+		sessions = new ArrayList<SessionImpl>();
 	}
 
 	@Override
@@ -63,7 +62,7 @@ public class GoalImpl implements Goal {
 
 	@Override
 	@OneToMany(targetEntity=SessionImpl.class, mappedBy="goal")
-	public List<Session> sessions() {
+	public List<SessionImpl> sessions() {
 		return sessions;
 	}
 

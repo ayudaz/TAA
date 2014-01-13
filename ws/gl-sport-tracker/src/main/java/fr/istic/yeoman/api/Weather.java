@@ -1,5 +1,7 @@
 package fr.istic.yeoman.api;
 
+import fr.istic.taa.yeoman.entities.SessionImpl;
+
 public interface Weather {
 	
 	// Attributes
@@ -13,6 +15,6 @@ public interface Weather {
 	public void setWind(double wind);
 	
 	// links with others interfaces
-	public Session getSession();
-	public void setSession(Session session);
+	public SessionImpl getSession();
+	public void setSession(SessionImpl session);
 }

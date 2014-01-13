@@ -11,7 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import fr.istic.yeoman.api.Music;
-import fr.istic.yeoman.api.Session;
 
 @Entity
 @Table(name="musics")
@@ -20,10 +19,10 @@ public class MusicImpl implements Music {
 	public int id;
 	public String name;
 	public String path;
-	public List<Session> sessions;
+	public List<SessionImpl> sessions;
 	
 	public MusicImpl() {
-		sessions = new ArrayList<Session>();
+		sessions = new ArrayList<SessionImpl>();
 	}
 
 	@Override
@@ -68,12 +67,12 @@ public class MusicImpl implements Music {
 
 	@Override
 	@ManyToMany(targetEntity=SessionImpl.class)
-	public List<Session> getSessions() {
+	public List<SessionImpl> getSessions() {
 		return sessions;
 	}
 	
 	@Override
-	public void setSessions(List<Session> sessions){
+	public void setSessions(List<SessionImpl> sessions){
 		this.sessions = sessions;
 	}
 

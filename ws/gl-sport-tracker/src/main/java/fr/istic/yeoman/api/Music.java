@@ -2,6 +2,8 @@ package fr.istic.yeoman.api;
 
 import java.util.List;
 
+import fr.istic.taa.yeoman.entities.SessionImpl;
+
 public interface Music {
 
 	// Attributes
@@ -16,6 +18,6 @@ public interface Music {
 	public void play();
 	
 	// link with other interfaces
-	public List<Session> getSessions();
-	public void setSessions(List<Session> sessions);
+	public List<SessionImpl> getSessions();
+	public void setSessions(List<SessionImpl> sessions);
 }

@@ -3,6 +3,8 @@ package fr.istic.yeoman.api;
 import java.util.Date;
 import java.util.List;
 
+import fr.istic.taa.yeoman.entities.SessionImpl;
+
 public interface User {
 	
 	// Attributes
@@ -34,11 +36,11 @@ public interface User {
 	public void setAvatar(String avatar);
 	
 	// Links with others interfaces
-	public List<Session> getSessions();
-	public void addSession(Session session);
-	public void addSession(Session session, boolean set);
-	public void removeSession(Session session);
+	public List<SessionImpl> getSessions();
+	public void addSession(SessionImpl session);
+	public void addSession(SessionImpl session, boolean set);
+	public void removeSession(SessionImpl session);
 	public void emptySession();
-	public void setSessions(List<Session> sessions);
+	public void setSessions(List<SessionImpl> sessions);
 	
 }

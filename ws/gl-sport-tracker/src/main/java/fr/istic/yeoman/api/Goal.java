@@ -2,6 +2,8 @@ package fr.istic.yeoman.api;
 
 import java.util.List;
 
+import fr.istic.taa.yeoman.entities.SessionImpl;
+
 public interface Goal {
 
 	// Attributes
@@ -13,5 +15,5 @@ public interface Goal {
 	public void setValue(double value);
 	
 	// links with others interfaces
-	public List<Session> sessions();
+	public List<SessionImpl> sessions();
 }

@@ -17,7 +17,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import fr.istic.yeoman.api.Session;
 import fr.istic.yeoman.api.User;
 
 
@@ -40,10 +39,10 @@ public class UserImpl implements User {
 	private String mail;
 	private String password;
 	private String avatar;
-	private List<Session> sessions;
+	private List<SessionImpl> sessions;
 	
 	public UserImpl(){
-		sessions = new ArrayList<Session>();
+		sessions = new ArrayList<SessionImpl>();
 	}
 	
 	@Override
@@ -166,19 +165,19 @@ public class UserImpl implements User {
 	@XmlTransient
 	@JsonIgnore
 	@Override
-	public List<Session> getSessions() {
+	public List<SessionImpl> getSessions() {
 		return sessions;
 	}
 	@Override
-	public void setSessions(List<Session> sessions){
+	public void setSessions(List<SessionImpl> sessions){
 		this.sessions = sessions;
 	}
 	@Override
-	public void addSession(Session session) {
+	public void addSession(SessionImpl session) {
 		addSession(session, true);
 	}
-	
-	public void addSession(Session session, boolean set){
+	@Override
+	public void addSession(SessionImpl session, boolean set){
 		if (session != null) {
             if(getSessions().contains(session)) {
                 getSessions().set(getSessions().indexOf(session), session);
@@ -187,12 +186,12 @@ public class UserImpl implements User {
                 getSessions().add(session);
             }
             if (set) {
-                session.setUser((User)this, false);
+                session.setUser(this, false);
             }
         }
 	}
 	@Override
-	public void removeSession(Session session) {
+	public void removeSession(SessionImpl session) {
 		getSessions().remove(session);
 		session.setUser(null);
 	}

@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import fr.istic.yeoman.api.Course;
 import fr.istic.yeoman.api.GpsPoint;
 
 @Entity
@@ -18,7 +17,7 @@ public class GpsPointImpl implements GpsPoint {
 	public double y;
 	public double z;
 	public double heartRate;
-	public Course course;
+	public CourseImpl course;
 
 	@Override
 	@Id
@@ -74,12 +73,12 @@ public class GpsPointImpl implements GpsPoint {
 
 	@Override
 	@ManyToOne(targetEntity=CourseImpl.class)
-	public Course getCourse() {
+	public CourseImpl getCourse() {
 		return course;
 	}
 
 	@Override
-	public void setCourse(Course course) {
+	public void setCourse(CourseImpl course) {
 		this.course = course;
 	}
 

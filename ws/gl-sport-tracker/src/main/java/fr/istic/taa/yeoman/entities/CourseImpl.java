@@ -11,19 +11,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import fr.istic.yeoman.api.Course;
-import fr.istic.yeoman.api.GpsPoint;
-import fr.istic.yeoman.api.Session;
 
 @Entity
 @Table(name="courses")
 public class CourseImpl implements Course {
 	
 	private int id;
-	private Session session;
-	private List<GpsPoint> gpsPoints;
+	private SessionImpl session;
+	private List<GpsPointImpl> gpsPoints;
 	
 	public CourseImpl(){
-		gpsPoints = new ArrayList<GpsPoint>();
+		gpsPoints = new ArrayList<GpsPointImpl>();
 	}
 	
 	@Override
@@ -40,23 +38,23 @@ public class CourseImpl implements Course {
 
 	@Override
 	@OneToOne(targetEntity=SessionImpl.class)
-	public Session getSession() {
+	public SessionImpl getSession() {
 		return session;
 	}
 
 	@Override
-	public void setSession(Session session) {
+	public void setSession(SessionImpl session) {
 		this.session = session;
 	}
 
 	@Override
 	@OneToMany(targetEntity=GpsPointImpl.class, mappedBy="course")
-	public List<GpsPoint> getGPSPoints() {
+	public List<GpsPointImpl> getGPSPoints() {
 		return gpsPoints;
 	}
 
 	@Override
-	public void setGPSPoints(List<GpsPoint> gpsPoints){
+	public void setGPSPoints(List<GpsPointImpl> gpsPoints){
 		this.gpsPoints = gpsPoints;
 	}
 }

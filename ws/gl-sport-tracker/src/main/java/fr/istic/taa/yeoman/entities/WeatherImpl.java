@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import fr.istic.yeoman.api.Session;
 import fr.istic.yeoman.api.Weather;
 import fr.istic.yeoman.api.WeatherState;
 
@@ -20,7 +19,7 @@ public class WeatherImpl implements Weather {
 	public double temperature;
 	public WeatherState weatherState;
 	public double wind;
-	public Session session;
+	public SessionImpl session;
 
 	@Override
 	@Id
@@ -67,12 +66,12 @@ public class WeatherImpl implements Weather {
 
 	@Override
 	@OneToOne(targetEntity=SessionImpl.class)
-	public Session getSession() {
+	public SessionImpl getSession() {
 		return session;
 	}
 	
 	@Override
-	public void setSession(Session session){
+	public void setSession(SessionImpl session){
 		this.session = session;
 	}
 
