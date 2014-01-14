@@ -174,21 +174,7 @@ public class UserImpl implements User {
 	}
 	@Override
 	public void addSession(SessionImpl session) {
-		addSession(session, true);
-	}
-	@Override
-	public void addSession(SessionImpl session, boolean set){
-		if (session != null) {
-            if(getSessions().contains(session)) {
-                getSessions().set(getSessions().indexOf(session), session);
-            }
-            else {
-                getSessions().add(session);
-            }
-            if (set) {
-                session.setUser(this, false);
-            }
-        }
+		sessions.add(session);
 	}
 	@Override
 	public void removeSession(SessionImpl session) {

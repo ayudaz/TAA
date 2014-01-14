@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import fr.istic.yeoman.api.Mode;
 import fr.istic.yeoman.api.Session;
@@ -132,6 +135,8 @@ public class SessionImpl implements Session {
 	
 	@Override
 	@ManyToMany(targetEntity=MusicImpl.class, mappedBy="sessions")
+	@XmlTransient
+	@JsonIgnore
 	public List<MusicImpl> getMusics() {
 		return musics;
 	}
@@ -198,13 +203,6 @@ public class SessionImpl implements Session {
 	
 	@Override
 	public void setUser(UserImpl user) {
-		setUser(user, true);
-	}
-
-	public void setUser(UserImpl user, boolean add) {
 		this.user = user;
-		if(user != null && add){
-			user.addSession(this, false);
-		}
 	}
 }

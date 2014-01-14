@@ -42,5 +42,4 @@ public interface Session {
 	public void setCourse(CourseImpl course);
 	public UserImpl getUser();
 	public void setUser(UserImpl user);
-	public void setUser(UserImpl user, boolean add);
 }

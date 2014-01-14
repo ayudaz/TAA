@@ -38,7 +38,6 @@ public interface User {
 	// Links with others interfaces
 	public List<SessionImpl> getSessions();
 	public void addSession(SessionImpl session);
-	public void addSession(SessionImpl session, boolean set);
 	public void removeSession(SessionImpl session);
 	public void emptySession();
 	public void setSessions(List<SessionImpl> sessions);

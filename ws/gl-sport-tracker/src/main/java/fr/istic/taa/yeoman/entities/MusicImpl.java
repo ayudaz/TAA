@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import fr.istic.yeoman.api.Music;
 
@@ -67,6 +70,8 @@ public class MusicImpl implements Music {
 
 	@Override
 	@ManyToMany(targetEntity=SessionImpl.class)
+	@XmlTransient
+	@JsonIgnore
 	public List<SessionImpl> getSessions() {
 		return sessions;
 	}

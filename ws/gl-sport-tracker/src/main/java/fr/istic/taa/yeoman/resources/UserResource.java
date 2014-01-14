@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.istic.taa.yeoman.dao.UserDao;
+import fr.istic.taa.yeoman.entities.SessionImpl;
 import fr.istic.taa.yeoman.entities.UserImpl;
 import fr.istic.yeoman.api.User;
 
@@ -64,6 +65,12 @@ public class UserResource {
 	@DELETE @Path("/{userId}")
 	public void delete(@PathParam("userId")int userId){
 		userDao.delete(userId);
+	}
+	
+	@GET @Path("/{userId}/sessions")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Collection<SessionImpl> getSessions(@PathParam("userId")int userId){
+		return userDao.getSessions(userId);
 	}
 	
 	@GET @Path("/test")

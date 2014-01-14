@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import fr.istic.yeoman.api.Course;
 
@@ -49,6 +52,8 @@ public class CourseImpl implements Course {
 
 	@Override
 	@OneToMany(targetEntity=GpsPointImpl.class, mappedBy="course")
+	@XmlTransient
+	@JsonIgnore
 	public List<GpsPointImpl> getGPSPoints() {
 		return gpsPoints;
 	}

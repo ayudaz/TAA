@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import fr.istic.yeoman.api.Goal;
 import fr.istic.yeoman.api.GoalType;
@@ -62,6 +65,8 @@ public class GoalImpl implements Goal {
 
 	@Override
 	@OneToMany(targetEntity=SessionImpl.class, mappedBy="goal")
+	@XmlTransient
+	@JsonIgnore
 	public List<SessionImpl> sessions() {
 		return sessions;
 	}

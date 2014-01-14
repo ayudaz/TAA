@@ -13,11 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.istic.taa.yeoman.dao.CourseDao;
-import fr.istic.taa.yeoman.dao.SessionDao;
 import fr.istic.taa.yeoman.entities.CourseImpl;
-import fr.istic.taa.yeoman.entities.SessionImpl;
 import fr.istic.yeoman.api.Course;
-import fr.istic.yeoman.api.Session;
 
 @Path("/courses")
 public class CourseRessource {
@@ -52,9 +49,9 @@ public class CourseRessource {
 		courseDao.update(course);
 	}
 	
-	@DELETE @Path("/{sessionId}")
-	public void deleteSession(@PathParam("sessionId") int sessionId){
-		courseDao.delete(sessionId);
+	@DELETE @Path("/{courseId}")
+	public void deleteCourse(@PathParam("courseId") int courseId){
+		courseDao.delete(courseId);
 	}
 	
 

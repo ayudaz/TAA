@@ -3,6 +3,7 @@ package fr.istic.taa.yeoman.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -73,6 +74,7 @@ public class GpsPointImpl implements GpsPoint {
 
 	@Override
 	@ManyToOne(targetEntity=CourseImpl.class)
+	@JoinColumn(name="course_id", referencedColumnName = "id")
 	public CourseImpl getCourse() {
 		return course;
 	}

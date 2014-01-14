@@ -1,11 +1,13 @@
 package fr.istic.taa.yeoman.dao;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import fr.istic.taa.yeoman.entities.SessionImpl;
 import fr.istic.taa.yeoman.entities.UserImpl;
 import fr.istic.yeoman.api.User;
 
@@ -41,6 +43,11 @@ public class UserDao extends GenericDaoImpl<UserImpl, Integer> {
         }
         tx.commit();
         return user;
+	}
+
+	public Collection<SessionImpl> getSessions(int userId) {
+		UserImpl user = this.read(userId);
+		return user.getSessions();
 	}
     
 }
