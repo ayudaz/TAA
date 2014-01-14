@@ -12,11 +12,10 @@ angular.module('yoApp')
 	else{
 	    $scope.user = User.get({userId: $scope.userId});
     	$scope.correctFields = true;
-    	
 
     	$scope.erreurServeur = false;
     	
-    	$scope.userSessions = Session.getAll();
+    	$scope.userSessions = Session.get({userId: $scope.userId});
     	
     	$scope.newSession = new Object();
     	
@@ -28,13 +27,14 @@ angular.module('yoApp')
 		    	
 		    	$scope.newSession.startDate = start;
 		    	$scope.newSession.endDate = end;
-		    	
+		    	$scope.newSession.user =$scope.user;
+
 				var result = Session.save({},$scope.newSession);
 				
 				result.$promise.then(
 			      function( value ){
-			    	  if(value.id != null){
-			    		  $location.path('sessions');
+			    	  if(value != null){
+			    		  $location.path('/session');
 			    	  }
 			    	  else{
 			    		  $scope.stillUsed = false;

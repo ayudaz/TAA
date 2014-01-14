@@ -7,7 +7,7 @@
   	
   	
   	<p class="error" style="margin-bottom:30px; font-size:16px" ng-hide="correctFields">Renseignements incorrects</p>
-  	<p class="error" style="margin-bottom:30px; font-size:16px" ng-hide="stillUsed">Pseudo ou/et email déjà utilisé(s)</p>
+  	<p class="error" style="margin-bottom:30px; font-size:16px" ng-show="stillUsed">Pseudo ou/et email déjà utilisé(s)</p>
 	
 	<form name="myForm" ng-submit="createUser(myForm)">
 	  <div style="display:inline-block; width:40%">

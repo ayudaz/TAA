@@ -47,7 +47,10 @@ var app = angular.module('yoApp', [
     .when('/create', {
     	templateUrl: 'views/main/create.html', 
       controller:  'CreateCtrl'
-    })      
+    })
+    .when('/about', {
+    	templateUrl: 'views/main/about.html', 
+    })  
     .when('/404', {
     	templateUrl: 'views/main/404.html', 
       controller: 'NotFoundCtrl'
@@ -60,7 +63,7 @@ var app = angular.module('yoApp', [
 app.factory('User', ['$resource', function($resource) {
 	return $resource('rest/users/:userId', { userId: '@userId' }, 
 			{ update: { method: 'PUT' },
-				getAll: {method: 'GET', isArray: true }
+			  getAll: {method: 'GET', isArray: true }
 		});
 }]);
 
@@ -88,11 +91,10 @@ app.factory('Page', function($rootScope){
         setCurrent:function(newCurrent){
              currentPage = newCurrent;
         }
-    }
+    };
 });
 
 app.controller('MainCtrl', function ($scope, $location, $cookieStore, User, Connexion, Page) {
-	console.log('MainCTRL....');
 	
 	$scope.isAuthentified = $cookieStore.get('user-session');
     $scope.userId = $cookieStore.get('user-id');
@@ -103,7 +105,6 @@ app.controller('MainCtrl', function ($scope, $location, $cookieStore, User, Conn
 		$location.path('/login');
 	}
 	else{
-		console.log("Determination de l'URL");
 		var currentURI = $location.path();
 		var tabURI = currentURI.split('/');
 
@@ -114,9 +115,7 @@ app.controller('MainCtrl', function ($scope, $location, $cookieStore, User, Conn
 	}
 	
 	$scope.deco = function() {
-		console.log("On trouve bien la fonction...");
 		if($cookieStore.get('user-session') == 'active'){
-			console.log("Deconexion...");
 			$cookieStore.remove('user-session');
 			$cookieStore.remove('user-id');
 			$location.path('/login');

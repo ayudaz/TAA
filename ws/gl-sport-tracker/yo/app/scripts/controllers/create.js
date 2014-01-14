@@ -5,7 +5,7 @@ angular.module('yoApp')
 	
 	$scope.isAuthentified = $cookieStore.get('user-session');
 	$scope.correctFields = true;
-	$scope.stillUsed = true;
+	$scope.stillUsed = false;
 	$scope.user = new Object();
 	
 	if($scope.isAuthentified  == 'active'){
@@ -18,13 +18,14 @@ angular.module('yoApp')
 				
 				result.$promise.then(
 			      function( value ){
-			    	  if(value.id != null){
-						$cookieStore.put("user-session", "active");
-						$cookieStore.put("user-id", value.id);
-						$location.path('accueil');
+			    	  console.log(value);
+			    	  if(value[0] != 0){
+							$cookieStore.put("user-session", "active");
+							$cookieStore.put("user-id", value[0]);
+							$location.path('accueil');
 			    	  }
 			    	  else{
-			    		  $scope.stillUsed = false;
+			    		  	$scope.stillUsed = true;
 			    	  }
 			      },
 			      function( error ){

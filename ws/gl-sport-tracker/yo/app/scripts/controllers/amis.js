@@ -13,6 +13,7 @@ angular.module('yoApp')
 	}
 	else{
 	    $scope.allUser = User.getAll();
-	    
+	    $scope.predicate = 'lastName';
+	    $scope.reverse = false;
 	}
  });

@@ -8,18 +8,18 @@
   	
   	Ajoutez vos amis ! <br /><br />
   	
-  	<div ng-show='allUser.length != 0'>
+	<div ng-show='allUser.length != 0'>
   		<table class="table table-striped">
   			<thead style="font-weight:bold">
        			<tr>
-            		<td>Nom</td>
-            		<td>Prenom</td>
-            		<td>Pseudo</td>
+            		<td><a href="" ng-click="predicate = 'lastName'; reverse=!reverse">Nom</a></td>
+            		<td><a href="" ng-click="predicate = 'firstName'; reverse=!reverse">Prenom</a></td>
+            		<td><a href="" ng-click="predicate = 'pseudo'; reverse=!reverse">Pseudo</a></td>
             		<td>#</td>
         		</tr>
        		</thead>
        		<tbody>
-        		<tr ng-repeat="ami in allUser">
+        		<tr ng-repeat="ami in allUser | orderBy:predicate:reverse" ng-hide="ami.id == userId">
         			<td>{{ami.lastName}}</td>
         			<td>{{ami.firstName}}</td>
         			<td>{{ami.pseudo}}</td>
