@@ -39,8 +39,15 @@ public class CourseRessource {
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newCourse(CourseImpl course){
-		courseDao.create(course);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newCourse(CourseImpl course){
+		try{
+			Course c = courseDao.create(course);
+			return c.getId();
+		}catch(Exception e){
+			return -1;
+		}
+		
 	}
 	
 	@PUT @Path("/{courseId}")

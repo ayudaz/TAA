@@ -38,8 +38,14 @@ SportTypeDao SportTypeDao;
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newSportType(SportTypeImpl SportType){
-		SportTypeDao.create(SportType);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newSportType(SportTypeImpl SportType){
+		try{
+			SportType st = SportTypeDao.create(SportType);
+			return st.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{SportTypeId}")

@@ -39,8 +39,14 @@ public class GoalRessource {
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newGoal(GoalImpl Goal){
-		GoalDao.create(Goal);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newGoal(GoalImpl Goal){
+		try{
+			Goal g = GoalDao.create(Goal);
+			return g.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{GoalId}")

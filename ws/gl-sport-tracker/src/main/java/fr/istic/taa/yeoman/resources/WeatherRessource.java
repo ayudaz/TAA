@@ -38,8 +38,14 @@ WeatherDao WeatherDao;
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newWeather(WeatherImpl Weather){
-		WeatherDao.create(Weather);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newWeather(WeatherImpl Weather){
+		try{
+			Weather w = WeatherDao.create(Weather);
+			return w.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{WeatherId}")

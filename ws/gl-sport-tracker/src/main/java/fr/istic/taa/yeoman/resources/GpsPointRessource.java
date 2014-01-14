@@ -38,8 +38,14 @@ GpsPointDao GpsPointDao;
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newGpsPoint(GpsPointImpl GpsPoint){
-		GpsPointDao.create(GpsPoint);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newGpsPoint(GpsPointImpl GpsPoint){
+		try{
+			GpsPoint gps = GpsPointDao.create(GpsPoint);
+			return gps.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{GpsPointId}")

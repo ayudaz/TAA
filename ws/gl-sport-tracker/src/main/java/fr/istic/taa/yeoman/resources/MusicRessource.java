@@ -38,8 +38,14 @@ MusicDao MusicDao;
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newMusic(MusicImpl Music){
-		MusicDao.create(Music);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newMusic(MusicImpl Music){
+		try{
+			Music m = MusicDao.create(Music);
+			return m.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{MusicId}")

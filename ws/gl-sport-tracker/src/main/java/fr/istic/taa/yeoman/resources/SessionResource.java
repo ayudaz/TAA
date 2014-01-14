@@ -39,8 +39,14 @@ public class SessionResource {
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void newSession(SessionImpl session){
-		sessionDao.create(session);
+	@Produces({ MediaType.APPLICATION_JSON })
+	public int newSession(SessionImpl session){
+		try{
+			Session s = sessionDao.create(session);
+			return s.getId();
+		}catch(Exception e){
+			return -1;
+		}
 	}
 	
 	@PUT @Path("/{sessionId}")
